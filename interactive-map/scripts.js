@@ -212,12 +212,6 @@ function loadArticle(name){
         return element.name === name;
     });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 771497720c18b9ba0aa487c02d5e5b075ece7e7d
-
-
 
 
 

@@ -1,0 +1,14 @@
+{
+  "name": "sass-test",
+  "version": "1.0.0",
+  "description": "fuck",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "node-sass scss/staged.scss css/staged.css" 
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.7.2"
+  }
+}

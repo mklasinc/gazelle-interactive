@@ -100,7 +100,9 @@ map.on('load', function () {
             }
         },
         "layout": {
-            "icon-image": "rocket-15"
+            "icon-image": "rocket-15",
+            "icon-size": 2
+
         }
     });
 
@@ -210,7 +212,7 @@ function loadArticle(name){
         return element.name === name;
     });
 
-    
+
 
 
 

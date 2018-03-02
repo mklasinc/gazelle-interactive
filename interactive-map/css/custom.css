@@ -1,3 +1,12 @@
 .author-list__author{
   list-style: none;
 }
+
+#map{
+    position: relative;
+  object-fit: cover;
+  margin-right: -0.5rem;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+  min-height: 100vh;
+}

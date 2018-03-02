@@ -1,20 +1,73 @@
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhlLWdhemVsbGUtYWQiLCJhIjoiY2plYTBzN3FuMThlMTJxbnRwdWlxaHh3NSJ9.PJwTgB-VeuND42Rh6RYpRg';
 
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
     center: [53.8478,23.4241], //set as UAE
-    zoom: 2
+    zoom: 3,
+    minZoom:3
+
 });
 
 var articleIsLoaded = false;
 var loadedArticleLocation = null;
+var atMapView = false;
 
 
+document.addEventListener('DOMContentLoaded', function(){
+
+
+    document.getElementById("takeMeBack").onclick = function(){
+
+        scrollTo(document.body, 0, 1250);
+
+        atMapView = false;
+
+    };
+
+});
+
+
+
+
+
+
+window.addEventListener('scroll', function(e) {
+
+        if( document.getElementById('map').getBoundingClientRect().top <=0  ){
+
+            atMapView = true;
+            console.log("when did this happen");
+            //allow zooming by scrolling in the map
+            map.scrollZoom.enable();
+
+            //click button to the top appears
+           document.getElementById('takeMeBack').style.display = "block";
+
+
+        }else{
+
+            atMapView = false;
+            //disallow zooming by scrolling in the map
+            map.scrollZoom.disable();
+            document.getElementById('takeMeBack').style.display = "none";
+
+
+            //the click button to top disappears
+
+
+        }
+
+    }
+
+
+);
 
 map.on('load', function () {
     map.addControl(new mapboxgl.NavigationControl());
-
+    map.scrollZoom.disable();
     // Add a symbol layer.
     map.addLayer({
         "id": "symbols",
@@ -110,7 +163,7 @@ map.on('load', function () {
     map.on('click', 'symbols', function (e) {
         if( articleIsLoaded && (loadedArticleLocation ===  e.features[0].properties.name) ){
             //clicking the same symbol twice, if the article is open will close the article.
-
+e
 
             //close the article panel
 
@@ -211,7 +264,6 @@ function loadArticle(name){
     var dataObj = articleData.find(function(element) {
         return element.name === name;
     });
-
 
 
 

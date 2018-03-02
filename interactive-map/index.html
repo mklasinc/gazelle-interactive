@@ -26,11 +26,30 @@
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        .backTop{
+            display: block;
+            z-index: 999;
+            position: fixed;
+            width: 3rem;
+            height: 3rem;
+            right: 5%;
+            bottom: 5%;
+            transition-duration: 0.3s;
+        }
+        @media (min-width: 600px){
+            .backTop:hover, .backTop:active{
+                height: 5rem;
+                width: 5rem;
+                transition-duration: 0.3s;
+            }
+        }
+    </style>
 
 	</head>
 	<body>
     <!-- BODY IS HERE -->
-    <div class="article">
+    <div class="article" id="top">
         <div class="article__header">
             <h1 class="article__header__title">Where’s Your Next Stop for Spring Break?</h1>
             <div class="article__header__teaser"> If your wanderlust is taking over and you’re feeling a bit bold this time, try convincing your friends to go to one of these five places for spring break.</div>
@@ -85,6 +104,11 @@
 
         </div>
         <!-- <div class="article__body__end-mark"><a href="/"><img src="https://thegazelle.s3.amazonaws.com/gazelle/2016/02/header-logo.png" alt="Gazelle Logo"></a></div> -->
+        <div class="backTop" id="takeMeBack" style="display:none;">
+            <a href="#top" class="backToTop"><img src="https://image.flaticon.com/icons/svg/10/10442.svg"></a>
+            <!-- credits to the creator, flaticon -->
+        </div>
+
 
     </div>
 		<!-- CONTENT GOES HERE -->

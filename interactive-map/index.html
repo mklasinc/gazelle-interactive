@@ -7,18 +7,22 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
 	</head>
 	<body>
 		<!-- CONTENT GOES HERE -->
 
-    <div id='map' style='width: 500%; height: 400px;'></div>
-    <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoidGhlLWdhemVsbGUtYWQiLCJhIjoiY2plYTBzN3FuMThlMTJxbnRwdWlxaHh3NSJ9.PJwTgB-VeuND42Rh6RYpRg';
-    var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
-    });
-    </script>
+        <!--&lt;!&ndash; IM-article-specific header &ndash;&gt;-->
+        <!--<a href="https://www.thegazelle.org/" class="header">-->
+            <!--<img src="https://thegazelle.s3.amazonaws.com/gazelle/2016/02/header-logo.png" alt="logo" />-->
+        <!--</a>-->
+
+
+        <div id='map'></div>
+
 
 		<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
 		<script type="text/javascript" src="scripts.js"></script>

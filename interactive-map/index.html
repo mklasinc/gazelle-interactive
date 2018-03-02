@@ -15,14 +15,15 @@
 
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/not_compiled.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/not_compiled.css" />
 
 
     <link rel="stylesheet" type="text/css" href="css/compiled1.css" />
     <link rel="stylesheet" type="text/css" href="css/compiled.css" />
     <!-- <link rel="stylesheet" type="text/css" href="css/compiled2.css" /> -->
 
-    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/custom.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
@@ -75,8 +76,16 @@
             <p>If your wanderlust is taking over and you’re feeling a bit bold this time, try convincing your friends to go to one of these places for spring break for a change. </p>
             <!-- <p><em>Thirangie Jayatilake is Features Editor. Arame Dieng is a contributing writer. Email them at feedback@thegazelle.org</em></p> -->
             <!-- <div id= "map-container"> -->
-            <div>
-              <div id="overlay"></div>
+            <div class="map-container">
+              <div class="map-overlay">
+                <div class="map-overlay__article">
+                  <img id="map-overlay__article__exit-button"src="cancel.png"/>
+                  <h1 class="map-overlay__article__header"></h1>
+                  <p class="map-overlay__article__description">
+                  </p>
+                </div>
+              </div>
+
               <div id='map'>
               </div>
             </div>

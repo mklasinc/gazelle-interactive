@@ -126,6 +126,7 @@ map.on('load', function () {
 
             loadedArticleLocation = null;
             articleIsLoaded = false;
+            document.querySelector('.map-overlay').style = "display:none";
 
 
         }else{
@@ -134,8 +135,13 @@ map.on('load', function () {
             loadedArticleLocation = e.features[0].properties.name;
             console.log("clicked : " + e.features[0].properties.name);
 
-
+            // if (e.classList.contains('bad')) {
             loadArticle(e.features[0].properties.name);
+
+            // document.querySelector('.map-overlay').style = "transform:translateX(0)";
+
+            // document.getElementsByClassName('map-overlay').classList.add('info-slide');
+            // e.target.classlist.add('info-slide');
 
 
             articleIsLoaded = true;
@@ -146,8 +152,20 @@ map.on('load', function () {
                 //super hacky. if zoom changes, re-determine the number that will adjust the map to be at the ideal location.
                 center: [e.features[0].geometry.coordinates[0] - 0.15, e.features[0].geometry.coordinates[1]],
                 zoom: 10
-
             });
+
+            // setTimeout(function(){
+            //   map.stop();
+            //   console.log("done!");
+            // },2500);
+            // animate_container(map);
+
+            // map.on('flyend', function(){
+            //     // flying = false;
+            //     console.log("done!");
+            //     document.querySelector('.map-overlay').classList.add('info-slide');
+            // });
+
 
 
         }
@@ -170,7 +188,12 @@ map.on('load', function () {
 });
 
 
+function animate_container(mymap){
+  while(mymap.isMoving()){
 
+  };
+  console.log("done!");
+}
 
 const articleData = [
 
@@ -199,7 +222,7 @@ const articleData = [
 
     {
         cityName: "Ajman, Fujairah, Ras al-Khaimah, Umm al-Quwain, United Arab Emirates",
-        name: "Ajman",
+        name: "UAE",
         text: "When breaks come around, we’re always eager to leave to country and travel anywhere else. But have you considered visiting any other emirate in the UAE other than Abu Dhabi, Dubai and Sharjah? The UAE is much more than its three famous emirates. Fujairah and Ras al- Khaimah have some of the most relaxing beaches in the UAE, and even going on a day cruise in any of the beach resorts there can be a real treat. In Ajman and Umm al-Quwain, you get a sense of the history and traditions of this country, and you’ll feel much more familiar with the culture of the place you live in. If you can drive or going with someone who can, you can always rent a car  for a reasonable price and drive around the emirates. You don’t have to spend the nights if you’re working with a low budget, but if you do, you can book a hotel for around 90-100 AED a night at any of the emirates. Give yourself a challenge and take a picture in every Emirate this spring break."
     }
 
@@ -208,9 +231,32 @@ const articleData = [
 
 function loadArticle(name){
 
-    var dataObj = articleData.find(function(element) {
-        return element.name === name;
+
+  var dataObj = articleData.find(function(element) {
+      return element.name === name;
+  });
+    // display overlay container
+    document.querySelector('.map-overlay').style = "display:block";
+
+    // populate overlay container with data
+    document.querySelector('.map-overlay__article__header').innerHTML = dataObj.cityName;
+    document.querySelector('.map-overlay__article__description').innerHTML = dataObj.text;
+
+
+    // set up even handler for the cancel button
+    document.querySelector('#map-overlay__article__exit-button').addEventListener('click',function(e){
+      document.querySelector('.map-overlay').style = "display:none";
+      //zoom out
+      map.flyTo({
+        center: [53.8478,23.4241], //set as UAE
+        zoom: 3
+      });
+
     });
+
+
+
+
 
 
 

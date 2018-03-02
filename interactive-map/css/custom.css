@@ -3,10 +3,62 @@
 }
 
 #map{
-    position: relative;
+  position: relative;
   object-fit: cover;
   margin-right: -0.5rem;
   width: 100vw;
   left: calc(-50vw + 50%);
   min-height: 100vh;
+}
+
+.map-overlay{
+  display:none;
+  z-index:100;
+  position:absolute;
+  background: white;
+  left: 0;
+  height: 100%;
+  width:50vw;
+  overflow:hidden !important;
+  /* transform:translateX(-50vw); */
+}
+
+.map-overlay__article{
+  padding:30px;
+  position: absolute;
+}
+
+.map-container{
+  overlay:hidden !important;
+}
+
+#map-overlay__article__exit-button{
+    width: 30px !important;
+    height: 30px !important;
+    left: 90%;
+    /* right: 0; */
+    /* right: 0; */
+    /* top: 0; */
+    position: absolute;
+}
+
+.info-slide {
+  animation-duration: 0.3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    transform:translateX(-50vw);
+  }
+
+  to {
+    transform:translateX(0);
+  }
+}
+
+@media (max-width: 700px){
+  .map-overlay{
+    width: 100vw;
+  }
 }

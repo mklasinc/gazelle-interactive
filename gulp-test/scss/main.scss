@@ -1,0 +1,442 @@
+/*
+ * Make text uppercase
+ */
+@mixin uppercase() {
+  text-transform: uppercase;
+}
+
+/*
+ * Typograpy
+ */
+ @mixin roboto-light {
+   font-family: "Roboto", sans-serif;
+   font-weight: 300;
+ }
+
+ @mixin roboto-normal {
+   font-family: "Roboto", sans-serif;
+   font-weight: 400;
+ }
+
+ @mixin roboto-bold {
+   font-family: "Roboto", sans-serif;
+   font-weight: 500;
+ }
+
+/*
+ * Home page special box size
+ */
+  @mixin bigger-box {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    //align-self: stretch;
+    flex-shrink: 1;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .article-preview {
+      &__featured-image {
+        flex: 1 1 auto;
+        height: 250px;
+        width: 350px;
+        margin-right: 1rem;
+        padding-bottom: 0;
+      }
+      &__content {
+        margin-top: 0.5rem;
+        //align-self: center;
+        &__title {
+          font-size: 1.5rem;
+          line-height: 2rem;
+        }
+        flex-grow: 1;
+        max-width: 50%;
+      }
+    }
+  }
+
+
+/*
+ * Vertical article preview layout
+ */
+ @mixin vertical-article-list {
+  display: block;
+  margin: 0 auto;
+  .article-preview {
+    max-width: $column-1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #E8E8E8;
+    flex-grow: 1;
+    max-width: 100%; // Keeps articles with short titles/teasers centered
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    &__featured-image {
+      object-fit: cover;
+      width: 450px;
+      height: 250px;
+    }
+
+    &__content {
+      max-width: 20%;
+      min-width: 250px;
+      padding-left: 1.3rem;
+      &__title {
+       font-size: 1.2rem;
+       line-height: 1.5rem;
+       font-weight: 700;
+      }
+
+      &__authors {
+       font-size: 0.8rem;
+       @include uppercase;
+       font-weight: 500;
+      }
+
+      &__teaser {
+       font-size: 0.8rem;
+      }
+    }
+  }
+  @media (max-width: $medium) {
+    min-width: 0;
+    max-width: 100%;
+    .article-preview {
+     flex-direction: column;
+     align-items: stretch;
+
+      &__featured-image {
+        width: 100%;
+        height: 300px;
+      }
+
+      &__content {
+        max-width: $column-1;
+        padding-left: 0;
+        font-size: inherit;
+        &__teaser {
+          display: block !important;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $small) {
+    .article-preview {
+      &__featured-image {
+        height: 175px;
+      }
+    }
+  }
+}
+
+@mixin body-text {
+  font-family: 'Lora', serif;
+  font-size: $article;
+  line-height: 1.8rem;
+  word-wrap: break-word;
+}
+
+/*
+ * Header with text in between lines
+ */
+@mixin section-header {
+  padding: 0;
+  margin: 0 0 0.3rem 0;
+  font-size: $category-large;
+  font-weight: 300;
+  color: $dark-grey;
+
+  @media (max-width: $small) {
+    font-size: $category-small;
+  }
+
+  // Section deliniation lines
+  overflow: hidden;
+  text-align: left;
+  &:before,
+  &:after {
+    z-index: -1;
+    background-color: $border-grey;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+  }
+  &:before {
+    right: 0.2rem;
+    margin-left: 0;
+    width: 30px;
+  }
+  &:after {
+    left: 0.2rem;
+    margin-right: -50%;
+    width: 90%;
+  }
+}
+
+/*
+ * Simple grey bottom border
+ */
+@mixin grey-bottom-border {
+  border-bottom: 1px solid $border-grey;
+}
+
+@mixin full-width {
+  position: relative;
+  object-fit: cover;
+  margin-right: -0.5rem; // Override #main right margin
+  width: 100vw;
+  left: calc(-50vw + 50%);
+}
+
+/*
+ * VARIABLES
+ */
+
+/*
+ * Colors
+ */
+$dark-grey: #595959;
+$lighter-grey: #ECECEC;
+$light-grey: #ACACAC;
+$border-grey: #C6C6C6;
+$link-blue: #1b7ab0;
+$transition-grey: #D3D3D3;
+
+/*
+ * Media Queries
+ */
+$large: 1200px;
+$medium: 780px;
+$small: 540px;
+
+/*
+ * Grid
+ */
+// 3 column grid
+  // Single column
+  $column-3-1: 30%;
+  // Spanning two columns
+  $column-3-2: 60%;
+
+// 2 column grid
+  $column-2: 45%;
+
+// 1 column grid
+  $column-1: 100%;
+
+
+/*
+ * Font Sizes
+ */
+// Category
+$category-large: 1.1rem;
+$category-small: 1rem;
+
+// Article Preview
+$title-large: 1.2rem;
+$authors-large: 0.8rem;
+$teaser-large: 0.8rem;
+
+$title-small: 1.2rem;
+$authors-small: 0.8rem;
+$teaser-small: 0.9rem;
+
+// Article
+$article: 1.15rem;
+
+
+// ARTICLE
+
+.article{
+  &__header {
+    max-width: 750px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid $border-grey;
+    &__title {
+      @include uppercase;
+      padding: 0;
+      margin: 0 0 0.1rem 0;
+      font-size: 2.2rem;
+      text-align: left;
+    }
+    &__teaser {
+      font-size: 1rem;
+      color: $dark-grey;
+      font-weight: 400;
+    }
+    &__subtitle {
+      margin-top: -0.5rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      @include uppercase;
+      color: $dark-grey;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin: 0.4rem 0;
+      padding: 0 0 0.4rem 0;
+      .author-list {
+        padding-right: 0.6rem;
+        margin-right: 0.5rem;
+        border-right: 2px solid $light-grey;
+      }
+      &__publication-date {
+        padding: 0 0.6rem 0 0;
+        margin: 0 0.5rem 0 0;
+        border-right: 2px solid $light-grey;
+      }
+      .sharing-button {
+        font-size: 16px;
+        &--facebook,
+        &--twitter,
+        &--linkedin,
+        &--email {
+          stroke: $dark-grey;
+        }
+      }
+    }
+  }
+
+  &__body {
+    max-width: 700px;
+    display: block;
+    margin: 0 auto;
+    @include body-text;
+    a {
+      text-decoration: underline;
+      color: $link-blue;
+    }
+    span.section-break {
+      border-bottom: 1px solid $border-grey;
+      width: 100%;
+      display: block;
+      margin: 2rem 0;
+    }
+    img, iframe, video {
+      height: auto;
+      padding-bottom: auto;
+    }
+    img {
+      @include full-width;
+    }
+    iframe, video {
+      min-height: 500px;
+    }
+    &__end-mark {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+      img {
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-grow: 1;
+    align-items: stretch;
+    justify-content:center;
+    @media (max-width: $medium) {
+      &__trending {
+        display: none;
+      }
+    }
+    &__related-articles {
+      &__header {
+        @include section-header;
+      }
+      @include vertical-article-list;
+      @media (min-width: $medium) {
+        padding-right: 1rem;
+        margin-right: 1rem;
+        border-right: 1px solid $border-grey;
+        .article-preview {
+          width: 100%;
+          &__featured-image {
+            width: 240px;
+            height: 150px;
+          }
+          &__content {
+            min-width: 50%;
+            .sharing-buttons {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    &__trending {
+      max-width: 30%;
+      .trending {
+        max-width: 100% !important;
+      }
+    }
+  }
+
+  @media (min-width: $medium) {
+    &__body {
+      iframe, video {
+        @include full-width;
+      }
+    }
+  }
+
+  @media (max-width: $medium) {
+    &__body {
+      iframe, video {
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin-right: 0;
+        min-height: 400px;
+      }
+    }
+  }
+
+  @media (max-width: $small) {
+    &__header {
+      padding-top: 0.5rem;
+      &__title {
+        font-size: 1.5rem;
+        line-height: 1.7rem;
+        padding-bottom: 0.2rem;
+      }
+      &__teaser {
+        font-size: 0.9rem;
+      }
+      &__subtitle {
+        font-size: 0.8rem;
+        &__publication-date {
+          border-right: none;
+        }
+        .sharing-buttons {
+          display: none;
+        }
+      }
+    }
+    &__body {
+      font-size: 1.05rem;
+      line-height: 1.4rem;
+      iframe, video {
+        min-height: 220px;
+      }
+    }
+  }
+}

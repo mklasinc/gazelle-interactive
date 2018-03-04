@@ -157,7 +157,7 @@
        * Font Sizes
        */
       .article__header {
-        max-width: 750px;
+        max-width: 700px;
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -192,7 +192,7 @@
           .article__header__subtitle__publication-date {
             padding: 0 0.6rem 0 0;
             margin: 0 0.5rem 0 0;
-            border-right: 2px solid #ACACAC; }
+					/*border-right: 2px solid #ACACAC;*/ }
           .article__header__subtitle .sharing-button {
             font-size: 16px; }
             .article__header__subtitle .sharing-button--facebook, .article__header__subtitle .sharing-button--twitter, .article__header__subtitle .sharing-button--linkedin, .article__header__subtitle .sharing-button--email {
@@ -383,6 +383,10 @@
               list-style: none;
             }
 
+						body{
+							    margin: 0;
+						}
+
             #map{
               position: relative;
               object-fit: cover;
@@ -407,11 +411,24 @@
             .map-overlay__article{
               padding:30px;
               position: absolute;
+							overflow: hidden;
+    					width: calc(100% - 60px);
             }
+
+						.map-overlay__article__header{
+							line-height: 1.2em;
+						}
+
+						.map-overlay__article__image{
+							max-width: 100%;
+							left:0 !important;
+						}
 
             .map-container{
               overlay:hidden !important;
             }
+
+
 
             #map-overlay__article__exit-button{
                 width: 30px !important;
@@ -438,10 +455,24 @@
               }
             }
 
-            @media (max-width: 700px){
+            @media (max-width: 600px){
+							body{
+								padding: 0 5px 0 5px;
+							}
               .map-overlay{
                 width: 100vw;
               }
+
+							.map-overlay__article{
+								 padding: 5px;
+								 width: auto;
+							}
+
+							.map-overlay__article__image{
+								max-width: none;
+    						left: calc(-50vw + 50%) !important;
+								margin-right: -1rem;
+							}
             }
 
 
@@ -473,7 +504,7 @@
             <div class="article__header__teaser"> If your wanderlust is taking over and you’re feeling a bit bold this time, try convincing your friends to go to one of these five places for spring break.</div>
             <div class="article__header__subtitle">
                 <div class="author-list">
-                    <li class="author-list__author"><a href="/author/thirangie-jayatilake">Malak Yasser</a></li>
+                    <li class="author-list__author"><a href="/author/malak-yasser">Malak Yasser</a></li>
                 </div>
                 <p class="article__header__subtitle__publication-date">Mar 3, 2018</p>
 
@@ -492,7 +523,8 @@
               <div class="map-overlay">
                 <div class="map-overlay__article">
                   <img id="map-overlay__article__exit-button"src="cancel.png"/>
-                  <h1 class="map-overlay__article__header"></h1>
+                  <h2 class="map-overlay__article__header"></h2>
+									<img class="map-overlay__article__image" src="http://gbchope.com/wp-content/uploads/2016/10/events-placeholder.jpg" />
                   <p class="map-overlay__article__description">
                   </p>
                 </div>

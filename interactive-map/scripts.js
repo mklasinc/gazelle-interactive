@@ -180,6 +180,7 @@ e
             loadedArticleLocation = null;
             articleIsLoaded = false;
             document.querySelector('.map-overlay').style = "display:none";
+            document.querySelector('body').style = "overflow:auto";
 
 
         }else{
@@ -290,6 +291,9 @@ function loadArticle(name){
   });
     // display overlay container
     document.querySelector('.map-overlay').style = "display:block";
+    window.scrollTo(0,document.body.scrollHeight);
+    document.querySelector('body').style = "overflow:hidden";
+
 
     // populate overlay container with data
     document.querySelector('.map-overlay__article__header').innerHTML = dataObj.cityName;
@@ -299,6 +303,7 @@ function loadArticle(name){
     // set up even handler for the cancel button
     document.querySelector('#map-overlay__article__exit-button').addEventListener('click',function(e){
       document.querySelector('.map-overlay').style = "display:none";
+      document.querySelector('body').style = "overflow:auto";
       //zoom out
       map.flyTo({
         center: [53.8478,23.4241], //set as UAE

@@ -162,7 +162,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        border-bottom: 1px solid #C6C6C6; }
+        border-bottom: 1px solid #c6c6c661; }
         .article__header__title {
           text-transform: uppercase;
           padding: 0;
@@ -387,6 +387,25 @@
 							    margin: 0;
 						}
 
+						.header{
+							max-width: 700px;
+							font-family: Roboto,Helvetica,Arial,sans-serif;
+							border-bottom: 1px solid #c6c6c6;
+							padding: 0 16px;
+							padding: 0 1rem;
+							height: 39px;
+							margin: 10px auto 30px auto;
+							display: flex;
+					    align-content: center;
+					    justify-content: center;
+						}
+
+						.header__logo{
+							transform: translateY(5px);
+							height: 40px;
+							width: auto;
+						}
+
             #map{
               position: relative;
               object-fit: cover;
@@ -404,7 +423,7 @@
               left: 0;
               height: 100%;
               width:50vw;
-              overflow:hidden !important;
+              overflow:auto;
               /* transform:translateX(-50vw); */
             }
 
@@ -498,6 +517,12 @@
 	</head>
 	<body>
     <!-- BODY IS HERE -->
+		<div class="header">
+			<a href="https://www.thegazelle.org/" >
+				<img class="header__logo" src="https://thegazelle.s3.amazonaws.com/gazelle/2016/02/header-logo.png" alt="logo" />
+			</a>
+		</div>
+
     <div class="article" id="top">
         <div class="article__header">
             <h1 class="article__header__title">Where’s Your Next Stop for Spring Break?</h1>

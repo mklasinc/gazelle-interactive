@@ -202,7 +202,7 @@ e
 
             //fly to the location
             map.flyTo({
-                //super hacky. if zoom changes, re-determine the number that will adjust the map to be at the ideal location.
+                //super hacky. if zoom changes, re-determine the number that will adjust the map to be at the ideal .
                 center: [e.features[0].geometry.coordinates[0] - 0.15, e.features[0].geometry.coordinates[1]],
                 zoom: 10
             });
@@ -288,6 +288,7 @@ function loadArticle(name){
   var dataObj = articleData.find(function(element) {
       return element.name === name;
   });
+
     // display overlay container
     document.querySelector('.map-overlay').style = "display:block";
 
